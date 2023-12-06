@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Posts {% endblock %}
+
+
+
+{% block content %}
+
+    <div>
+        <h1> POSTS </h1>
+    </div>
+
+	<div>
+        {% for post in posts %}
+            <hr>
+        	<h3><a href="{% url 'post_page' post.id %}">{{ post.title }}</a></h3>
+            <button><a href="{% url 'delete' post.id %}"> Delete </a></button>
+            <button><a href="{% url 'edit_page' post.id %}"> Edit </a></button>
+            <pre> {{ post.tag }}</pre>
+
+        {% empty %}
+            <hr>
+        	<pre> NO POST </pre>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
